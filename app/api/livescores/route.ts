@@ -4,12 +4,13 @@ import axios from 'axios';
 const API_URL = 'https://api.football-data.org/v4';
 const API_KEY = process.env.FOOTBALL_DATA_API_KEY;
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function GET(req: NextApiRequest, res: NextApiResponse) {
   console.log('API route called with method:', req.method);
-
-  if (req.method !== 'GET') {
-    return res.status(405).json({ error: 'Method Not Allowed' });
-  }
+  console.log(API_KEY);
+  
+  // if (req.method !== 'GET') {
+  //   return res.status(405).json({ error: 'Method Not Allowed' });
+  // }
 
   if (!API_KEY) {
     console.error('FOOTBALL_DATA_API_KEY is not set');
@@ -23,6 +24,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         'X-Auth-Token': API_KEY,
       },
     });
+
+    
 
     console.log('Football-Data API response status:', response.status);
     console.log('Football-Data API response headers:', response.headers);
