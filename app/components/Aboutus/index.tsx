@@ -33,12 +33,18 @@ export default function Component() {
   const fetchLiveScores = async () => {
     setIsLoading(true);
     try {
-      const response = await fetch("/api/livescores", {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-        },
-      });
+      const response = await fetch(
+        "https://free-api-live-football-data.p.rapidapi.com/football-get-all-leagues",
+        {
+          method: "GET",
+          headers: {
+            "x-rapidapi-key":
+              "73452e0975mshf95ab79883098b0p119f1djsnf35fc8d34115",
+            Accept: "application/json",
+            "x-rapidapi-host": "free-api-live-football-data.p.rapidapi.com",
+          },
+        }
+      );
 
       console.log("Response status:", response.status);
       console.log("Response headers:", response.headers);
