@@ -1,8 +1,10 @@
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import "./globals.css";
 // import Navbar from "./components/Navbar/index";
 // import Footer from "./components/Footer/index";
 import { Metadata } from "next";
 import Head from "next/head";
+import { AppSidebar } from "./components/Sidebar";
 
 export const metadata: Metadata = {
   title: "Unicon Tech | Your Source for Tech Solutions",
@@ -55,9 +57,13 @@ export default function RootLayout({
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <body>
-        {/* <Navbar /> */}
+      <SidebarProvider>
+      <AppSidebar />
+      <main className="w-full">
+        <SidebarTrigger />
         {children}
-        {/* <Footer /> */}
+      </main>
+    </SidebarProvider>
       </body>
     </html>
   );
